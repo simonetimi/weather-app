@@ -1,4 +1,10 @@
 import './index.css';
-import loadModule from './modules/module';
+import getCoordinates from './modules/geocoding';
+import getWeather from './modules/weather';
 
-loadModule();
+const locationCoordinates = await getCoordinates('Milan');
+console.log(locationCoordinates);
+
+const weather = await getWeather(locationCoordinates, 0);
+
+console.log(weather);
