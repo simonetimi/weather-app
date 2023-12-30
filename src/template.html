@@ -1,9 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <h2 class="location">Rome, Italy</h2>
+      <div class="location-input">
+        <button class="wi wi-celsius"></button>
+        <input type="text" placeholder="Insert city" />
+        <button class="material-symbols-outlined">done</button>
+      </div>
+      <div class="selected-day-info">
+        <p id="main-temperature">30°</p>
+        <div id="main-weather-code">
+          <p class="weather-code-text">Sunny</p>
+          <p class="weather-code-icon wi wi-day-sunny"></p>
+        </div>
+        <div class="weather-labels">
+          <div id="label-temp">
+            <p class="wi wi-thermometer"></p>
+            <div class="data-container">
+              <p>Min: 22°</p>
+              <p>Max: 32°</p>
+            </div>
+          </div>
+          <div id="label-prec">
+            <p class="wi wi-umbrella"></p>
+            <div class="data-container">
+              <p>Prob: 0%</p>
+              <p>Sum: 0mm</p>
+            </div>
+          </div>
+          <div id="label-wind">
+            <p class="wi wi-strong-wind"></p>
+            <div class="data-container">
+              <p>Wind: 10km/h</p>
+              <p>Gusts: 20km/h</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="days-container">
+        <div class="day-card selected" id="day-1">
+          <p class="day-card-day">Today</p>
+          <p class="day-card-temp">32°</p>
+          <p class="day-card-code wi wi-day-sunny"></p>
+        </div>
+        <div class="day-card" id="day-2">
+          <p class="day-card-day">Sun</p>
+          <p class="day-card-temp">30°</p>
+          <p class="day-card-code wi wi-day-sunny"></p>
+        </div>
+        <div class="day-card" id="day-3">
+          <p class="day-card-day">Mon</p>
+          <p class="day-card-temp">32°</p>
+          <p class="day-card-code wi wi-day-sunny"></p>
+        </div>
+        <div class="day-card" id="day-4">
+          <p class="day-card-day">Tue</p>
+          <p class="day-card-temp">32°</p>
+          <p class="day-card-code wi wi-day-sunny"></p>
+        </div>
+        <div class="day-card" id="day-5">
+          <p class="day-card-day">Wed</p>
+          <p class="day-card-temp">28°</p>
+          <p class="day-card-code wi wi-day-sunny"></p>
+        </div>
+        <div class="day-card" id="day-6">
+          <p class="day-card-day">Thu</p>
+          <p class="day-card-temp">30°</p>
+          <p class="day-card-code wi wi-day-sunny"></p>
+        </div>
+        <div class="day-card" id="day-7">
+          <p class="day-card-day">Fri</p>
+          <p class="day-card-temp">31°</p>
+          <p class="day-card-code wi wi-day-sunny"></p>
+        </div>
+      </div>
+    </main>
+    <aside></aside>
+  </body>
 </html>

@@ -18,7 +18,7 @@ module.exports = merge(common, {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|webp|avif)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/images/[hash][ext][query]',

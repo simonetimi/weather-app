@@ -1,0 +1,9 @@
+aside {
+  background-color: rgba(225, 225, 225, 0.8);
+  border-radius: 0 30px 30px 0;
+  width: 22vw;
+  height: 90%;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+}

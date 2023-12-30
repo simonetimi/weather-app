@@ -1,7 +1,7 @@
 export default async function getCoordinates(location) {
   try {
     const response = await fetch(
-      `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=3&language=en&format=json`,
+      //`https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=3&language=en&format=json`,
       { mode: 'cors', cache: 'no-cache' },
     );
     if (!response.ok) {
