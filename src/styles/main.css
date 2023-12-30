@@ -26,7 +26,7 @@ h2 {
   gap: 0.6rem;
 }
 
-.location-input>input {
+.input-container>input {
   border-radius: 12px;
   border: 0;
   padding: 0.4rem;
@@ -35,6 +35,51 @@ h2 {
   height: calc(0.2rem + 1.2vw);
   font-size: calc(0.4rem + 0.6vw);
   font-weight: 300;
+}
+
+.input-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: white;
+  border-radius: 14px;
+  padding: 0.3rem 0.4rem;
+  font-size: 0.8rem;
+  height: auto;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  /* for the animation */
+  transform: scaleY(1);
+  transform-origin: top;
+  /* positioning */
+  position: absolute;
+  width: calc(4rem + 7vw);
+  top: 120%;
+  left: 46%;
+  margin-left: calc(calc(3rem + 6vw) / -2);
+  /* gets the width of the dropdown menu and divides it by half, then returns negative number */
+}
+
+.dropdown-menu.ready {
+  transition: transform 0.5s ease-in-out;
+}
+
+.hide {
+  transform: scaleY(0);
+}
+
+.dropdown-menu>p {
+  border-radius: 12px;
+  padding: 0.2rem;
+}
+
+.dropdown-menu>p:hover {
+  cursor: pointer;
+  background-color: #EEE;
+  padding: 0.2rem;
 }
 
 .location-input>button {
@@ -48,6 +93,7 @@ h2 {
 
 .location-input>button:hover {
   background-color: #EEE;
+  cursor: pointer;
 }
 
 .location-input>button:active {

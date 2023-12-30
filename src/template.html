@@ -14,7 +14,14 @@
       <h2 class="location">Rome, Italy</h2>
       <div class="location-input">
         <button class="wi wi-celsius"></button>
-        <input type="text" placeholder="Insert city" />
+        <div class="input-container">
+          <input type="text" placeholder="Insert city" />
+          <div class="dropdown-menu">
+            <p id="first-location">Rome, Italy</p>
+            <p id="second-location">Rome, Texas</p>
+            <p id="third-location">Rome, New Jersey</p>
+          </div>
+        </div>
         <button class="material-symbols-outlined">done</button>
       </div>
       <div class="selected-day-info">
@@ -34,7 +41,7 @@
           <div id="label-prec">
             <p class="wi wi-umbrella"></p>
             <div class="data-container">
-              <p>Prob: 0%</p>
+              <p>Prob.: 0%</p>
               <p>Total: 0mm</p>
             </div>
           </div>
