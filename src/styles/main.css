@@ -5,14 +5,14 @@ main {
   height: 90%;
   margin: 0;
   display: grid;
-  grid-template: 1fr 3fr 2fr / 1fr 1fr;
+  grid-template: 1fr 3fr 2fr / 3fr 1fr;
   overflow: auto;
 }
 
 h2 {
   grid-area: 1 / 1 / 2 / 2;
   padding: 2.4rem;
-  font-size: calc(1rem + 2vw);
+  font-size: calc(0.2rem + 3vw);
   font-weight: 200;
   color: #333;
 }
@@ -45,26 +45,17 @@ h2 {
   background-color: white;
   border-radius: 14px;
   padding: 0.3rem 0.4rem;
-  font-size: 0.8rem;
   height: auto;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  /* for the animation */
-  transform: scaleY(1);
-  transform-origin: top;
-  /* positioning */
   position: absolute;
-  width: calc(4rem + 7vw);
+  width: calc(2rem + 8vw);
   top: 120%;
-  left: 46%;
+  left: 20%;
   margin-left: calc(calc(3rem + 6vw) / -2);
   /* gets the width of the dropdown menu and divides it by half, then returns negative number */
-}
-
-.dropdown-menu.ready {
-  transition: transform 0.5s ease-in-out;
 }
 
 .hide {
@@ -72,6 +63,7 @@ h2 {
 }
 
 .dropdown-menu>p {
+  font-size: calc(0.3rem + 0.5vw);
   border-radius: 12px;
   padding: 0.2rem;
 }
@@ -136,19 +128,19 @@ h2 {
   gap: 0.8rem;
   background-color: #FFF;
   border-radius: 12px;
-  height: calc(1rem + 2vw);
-  width: calc(4.4rem + 4vw);
+  height: calc(1rem + 1.8vw);
+  width: calc(8rem + 2vw);
   padding: 0.6rem;
   align-items: center;
   justify-content: center;
 }
 
 .weather-labels>div>p {
-  font-size: calc(0.3rem + 1.2vw);
+  font-size: calc(0.8rem + 0.6vw);
 }
 
 .weather-labels>div>div>p {
-  font-size: calc(0.5rem + 0.4vw);
+  font-size: calc(0.7rem + 0.2vw);
 }
 
 .data-container {
@@ -176,11 +168,13 @@ h2 {
   border-radius: 12px;
   height: calc(5rem + 1vw);
   width: calc(2.8rem + 1vw);
-  font-size: 1rem;
   padding: 0.6rem;
-  font-size: 0.9rem;
   font-weight: 200;
   border: 1px solid transparent;
+}
+
+.day-card>p {
+  font-size: calc(0.8rem + 0.3vw);
 }
 
 .day-card:hover {
@@ -193,14 +187,14 @@ h2 {
 }
 
 .day-card>p:first-of-type {
-  font-size: 1.2rem;
+  font-size: calc(0.8rem + 0.6vw)
 }
 
 .day-card:active {
   transform: translateY(2px);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
 
   aside {
     display: none;
@@ -219,8 +213,12 @@ h2 {
     padding: 1.2rem;
   }
 
+  h2 {
+    font-size: calc(0.6rem + 3vw);
+  }
+
   .weather-labels {
-    gap: 0.3rem;
+    gap: 0.5rem;
     flex-direction: column;
   }
 

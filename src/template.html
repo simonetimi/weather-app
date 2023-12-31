@@ -13,16 +13,11 @@
     <main>
       <h2 class="location">Rome, Italy</h2>
       <div class="location-input">
-        <button class="wi wi-celsius"></button>
+        <button class="wi wi-celsius" id="unit-button"></button>
         <div class="input-container">
-          <input type="text" placeholder="Insert city" />
-          <div class="dropdown-menu">
-            <p id="first-location">Rome, Italy</p>
-            <p id="second-location">Rome, Texas</p>
-            <p id="third-location">Rome, New Jersey</p>
-          </div>
+          <input type="text" placeholder="Insert city" id="user-city" />
+          <div class="dropdown-menu hide"></div>
         </div>
-        <button class="material-symbols-outlined">done</button>
       </div>
       <div class="selected-day-info">
         <p id="main-temperature">30°</p>
@@ -48,7 +43,7 @@
           <div id="label-wind">
             <p class="wi wi-strong-wind"></p>
             <div class="data-container">
-              <p>Wind: 10km/h</p>
+              <p>Speed: 10km/h</p>
               <p>Gusts: 20km/h</p>
             </div>
           </div>
