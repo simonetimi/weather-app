@@ -313,9 +313,9 @@ const debouncedInputHandler = debounce(async () => {
     case 3:
       clearMenu();
       dropdownMenu.classList.remove('hide');
-      firstLocation.textContent = `${locationCoordinates[0].city}, ${locationCoordinates[0].country}`;
-      secondLocation.textContent = `${locationCoordinates[1].city}, ${locationCoordinates[1].country}`;
-      thirdLocation.textContent = `${locationCoordinates[2].city}, ${locationCoordinates[2].country}`;
+      firstLocation.textContent = `${locationCoordinates[0].city}, ${locationCoordinates[0].state}, ${locationCoordinates[0].country}`;
+      secondLocation.textContent = `${locationCoordinates[1].city}, ${locationCoordinates[1].state}, ${locationCoordinates[1].country}`;
+      thirdLocation.textContent = `${locationCoordinates[2].city}, ${locationCoordinates[2].state}, ${locationCoordinates[2].country}`;
       firstLocation.addEventListener('click', async () => {
         const newWeather = await getWeather(locationCoordinates, 0, unit);
         const newCoordinates = locationCoordinates[0];

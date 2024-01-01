@@ -51,7 +51,7 @@ h2 {
   flex-direction: column;
   gap: 0.2rem;
   position: absolute;
-  width: calc(2rem + 8vw);
+  width: calc(2rem + 10vw);
   top: 120%;
   left: 20%;
   margin-left: calc(calc(3rem + 6vw) / -2);
