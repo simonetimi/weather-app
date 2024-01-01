@@ -1,4 +1,4 @@
-import './index.css';
+import './style.css';
 import init from './modules/ui';
 
 init();

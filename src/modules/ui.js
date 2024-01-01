@@ -1,3 +1,5 @@
+import { parseISO, format } from 'date-fns';
+
 import getCoordinates from './geocoding';
 import getWeather from './weather';
 import {
@@ -34,7 +36,7 @@ function setWelcome() {
     welcomeMessage.textContent = 'Good Morning';
   } else if (currentHour > 12 && currentHour < 18) {
     welcomeMessage.textContent = 'Good Afternoon';
-  } else if (currentHour >= 18 && currentHour < 0) {
+  } else if (currentHour >= 18 && currentHour <= 23) {
     welcomeMessage.textContent = 'Good Evening';
   } else {
     welcomeMessage.textContent = 'Good Night';
@@ -48,11 +50,24 @@ function clearMenu() {
   dropdownMenu.innerHTML = '';
 }
 
+// selection of the day must be stored
+const selectedDay = 'today';
+
 // write UI
 function renderUI(weatherObject, coordinatesArray) {
   // display city
   const selectedLocation = document.querySelector('main > h2');
   selectedLocation.textContent = `${coordinatesArray[0].city}, ${coordinatesArray[0].country}`;
+  // day cards selection
+  const dayCards = document.querySelectorAll('.day-card');
+  dayCards.forEach((card, index) => {
+    if (index > 0) {
+      const date = parseISO(weatherObject.daily.time[index]);
+      const dayOfTheWeek = format(date, 'eee');
+      const paraDay = card.querySelector(':first-child');
+      paraDay.textContent = dayOfTheWeek;
+    }
+  });
 }
 
 // get user unit selection
