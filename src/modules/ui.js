@@ -36,13 +36,6 @@ function setWelcome() {
   }
 }
 
-// get user city selection
-const userInput = document.getElementById('user-city');
-const dropdownMenu = document.querySelector('.dropdown-menu');
-function clearMenu() {
-  dropdownMenu.innerHTML = '';
-}
-
 // function for setting the right weather icon
 function selectWeatherDecoder(weatherCode) {
   switch (weatherCode) {
@@ -93,8 +86,7 @@ function selectWeatherDecoder(weatherCode) {
 // selection of the day must be stored
 let selectedDay = 0;
 
-// UI functions
-
+// UI render
 function renderMain(weatherObject, coordinatesArray) {
   // display city
   const selectedLocation = document.querySelector('main > h2');
@@ -214,6 +206,13 @@ function renderSidebar(weatherObject) {
   precipitation.textContent = `${weatherObject.current.precipitation} mm`;
 }
 
+// menu city selection
+const userInput = document.getElementById('user-city');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+function clearMenu() {
+  dropdownMenu.innerHTML = '';
+}
+
 function hideMenu() {
   dropdownMenu.classList.add('hide');
   userInput.value = '';
@@ -262,6 +261,7 @@ function debounce(func, delay) {
     debounceTimer = setTimeout(() => func.apply(context, args), delay);
   };
 }
+
 const debouncedInputHandler = debounce(async () => {
   const firstLocation = document.createElement('p');
   firstLocation.setAttribute('id', 'first-location');
@@ -346,6 +346,7 @@ const debouncedInputHandler = debounce(async () => {
       clearMenu();
   }
 }, 500);
+
 userInput.addEventListener('input', debouncedInputHandler);
 
 export default async function init() {
