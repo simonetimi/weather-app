@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script type="module" crossorigin src="/assets/index-rlQ_7WeX.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-vG9EObZ_.css">
+  </head>
+  <body>
+    <main>
+      <h2 class="location">Rome, Italy</h2>
+      <div class="location-input">
+        <button class="wi wi-celsius" id="unit-button"></button>
+        <div class="input-container">
+          <input type="text" placeholder="Insert city" id="user-city" />
+          <div class="dropdown-menu hide"></div>
+        </div>
+      </div>
+      <div class="selected-day-info">
+        <p id="main-temperature">30°</p>
+        <div id="main-weather-code">
+          <p class="weather-code-text">Sunny</p>
+        </div>
+        <div class="weather-labels">
+          <div id="label-temp">
+            <p class="wi wi-thermometer"></p>
+            <div class="data-container">
+              <p></p>
+              <p></p>
+            </div>
+          </div>
+          <div id="label-prec">
+            <p class="wi wi-umbrella"></p>
+            <div class="data-container">
+              <p></p>
+              <p></p>
+            </div>
+          </div>
+          <div id="label-wind">
+            <p class="wi wi-strong-wind"></p>
+            <div class="data-container">
+              <p></p>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="days-container">
+        <div class="day-card selected" data-index="0">
+          <p class="day-card-day">Today</p>
+          <p class="day-card-temp">32°</p>
+          <p class="day-card-code"></p>
+        </div>
+        <div class="day-card" data-index="1">
+          <p class="day-card-day">Sun</p>
+          <p class="day-card-temp">30°</p>
+          <p class="day-card-code"></p>
+        </div>
+        <div class="day-card" data-index="2">
+          <p class="day-card-day">Mon</p>
+          <p class="day-card-temp">32°</p>
+          <p class="day-card-code"></p>
+        </div>
+        <div class="day-card" data-index="3">
+          <p class="day-card-day">Tue</p>
+          <p class="day-card-temp">32°</p>
+          <p class="day-card-code"></p>
+        </div>
+        <div class="day-card" data-index="4">
+          <p class="day-card-day">Wed</p>
+          <p class="day-card-temp">28°</p>
+          <p class="day-card-code"></p>
+        </div>
+        <div class="day-card" data-index="5">
+          <p class="day-card-day">Thu</p>
+          <p class="day-card-temp">30°</p>
+          <p class="day-card-code"></p>
+        </div>
+        <div class="day-card" data-index="6">
+          <p class="day-card-day">Fri</p>
+          <p class="day-card-temp">31°</p>
+          <p class="day-card-code"></p>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="welcome">
+        <h2 class="welcome-title">Good Morning</h2>
+        <h3 class="time">11:43</h3>
+      </div>
+      <div class="current-weather" id="aside-weather">
+        <p class="current-weather-code weather-code-icon wi"></p>
+        <p class="current-temp"></p>
+        <p class="current-perc-temp"></p>
+        <div class="current-humidity">
+          <p class="wi wi-humidity"></p>
+          <p></p>
+        </div>
+        <div class="current-wind">
+          <p class="wi wi-strong-wind"></p>
+          <p>30 km/h</p>
+        </div>
+        <div class="current-precipitation">
+          <p class="wi wi-umbrella"></p>
+          <p>0%</p>
+        </div>
+      </div>
+    </aside>
+  </body>
+</html>
