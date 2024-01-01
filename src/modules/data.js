@@ -72,10 +72,16 @@ let weather = defaultWeatherObject;
 let coordinates = defaultCoordinatesArray;
 
 function updateWeather(newWeather) {
+  if (newWeather === 'API-error') {
+    return;
+  }
   weather = newWeather;
 }
 
 function updateCoordinates(newCoordinates) {
+  if (newCoordinates === 'API-error') {
+    return;
+  }
   coordinates = [newCoordinates];
 }
 

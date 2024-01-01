@@ -15,6 +15,6 @@ export default async function getWeather(coordinates, index, unit) {
     const weatherResults = await response.json();
     return weatherResults;
   } catch (err) {
-    return {};
+    return 'API-error';
   }
 }
