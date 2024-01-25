@@ -1,3 +1,11 @@
+export type Coordinates = {
+  city: string;
+  latitude: string;
+  longitude: string;
+  country: string;
+  state: string;
+};
+
 const defaultWeatherObject = {
   latitude: 41.89,
   longitude: 12.51,
@@ -71,14 +79,14 @@ const defaultCoordinatesArray = [
 let weather = defaultWeatherObject;
 let coordinates = defaultCoordinatesArray;
 
-function updateWeather(newWeather) {
+function updateWeather(newWeather: typeof defaultWeatherObject | 'API-error') {
   if (newWeather === 'API-error') {
     return;
   }
   weather = newWeather;
 }
 
-function updateCoordinates(newCoordinates) {
+function updateCoordinates(newCoordinates: Coordinates | 'API-error') {
   if (newCoordinates === 'API-error') {
     return;
   }

@@ -1,4 +1,10 @@
-export default async function getWeather(coordinates, index, unit) {
+import type { Coordinates } from './data';
+
+export default async function getWeather(
+  coordinates: Coordinates[],
+  index: number,
+  unit: string,
+) {
   // unit must be celsius or fahrenheit
   try {
     const { latitude, longitude } = coordinates[index];
