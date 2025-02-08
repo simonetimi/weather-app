@@ -200,7 +200,7 @@ function renderCards(weatherObject: typeof defaultWeatherObject) {
     const paraDayCode = document.createElement('p');
     paraDayCode.classList.add('day-card-code');
     paraDayCode.classList.add('wi');
-    paraDayCode.classList.add(`${dayWeatherIcon[0]}`);
+    paraDayCode.classList.add(dayWeatherIcon[0]);
     card.appendChild(paraDayCode);
   });
   // event listener to the parent
@@ -231,7 +231,7 @@ function renderSidebar(weatherObject: typeof defaultWeatherObject) {
   paraWeatherIcon.classList.add('current-weather-code');
   paraWeatherIcon.classList.add('weather-code-icon');
   paraWeatherIcon.classList.add('wi');
-  paraWeatherIcon.classList.add(`${weatherCodeIcon[0]}`);
+  paraWeatherIcon.classList.add(weatherCodeIcon[0]);
   weatherContainer.prepend(paraWeatherIcon);
   const paraTemp = weatherContainer.querySelector('p:nth-child(2)');
   if (paraTemp === null) return;
@@ -312,17 +312,14 @@ unitButton?.addEventListener('click', async () => {
 
 // search bar
 // debounce function avoids too frequent API calls by setting a timer after an event has been called
-function debounce(
-  func: (...args: unknown[]) => void,
-  delay: number,
-): (...args: unknown[]) => void {
+function debounce(func: () => void, delay: number): () => void {
   let debounceTimer: ReturnType<typeof setTimeout>;
 
-  return function (...args: unknown[]): void {
-    if (debounceTimer !== null) {
+  return function (): void {
+    if (debounceTimer) {
       clearTimeout(debounceTimer);
     }
-    debounceTimer = setTimeout(() => func(...args), delay);
+    debounceTimer = setTimeout(() => func(), delay);
   };
 }
 
@@ -333,82 +330,31 @@ const debouncedInputHandler = debounce(async () => {
   secondLocation.setAttribute('id', 'second-location');
   const thirdLocation = document.createElement('p');
   thirdLocation.setAttribute('id', 'third-location');
+  const locationsArray = [firstLocation, secondLocation, thirdLocation];
   if (userInput?.value === '') {
     dropdownMenu.classList.add('hide');
   }
   if (userInput === null) return;
   const locationCoordinates = await getCoordinates(userInput.value);
-  const foundCities = locationCoordinates.length;
-  switch (foundCities) {
-    case 1:
-      clearMenu();
-      dropdownMenu.classList.remove('hide');
-      firstLocation.textContent = `${locationCoordinates[0].city}, ${locationCoordinates[0].country}`;
-      firstLocation.addEventListener('click', async () => {
-        const newWeather = await getWeather(locationCoordinates, 0, unit);
-        const newCoordinates = locationCoordinates[0];
-        updateWeather(newWeather);
-        updateCoordinates(newCoordinates);
-        renderUi(retrieveWeather(), retrieveCoordinates());
-      });
-      dropdownMenu.appendChild(firstLocation);
-      break;
-    case 2:
-      clearMenu();
-      dropdownMenu.classList.remove('hide');
-      firstLocation.textContent = `${locationCoordinates[0].city}, ${locationCoordinates[0].country}`;
-      secondLocation.textContent = `${locationCoordinates[1].city}, ${locationCoordinates[1].country}`;
-      firstLocation.addEventListener('click', async () => {
-        const newWeather = await getWeather(locationCoordinates, 0, unit);
-        const newCoordinates = locationCoordinates[0];
-        updateWeather(newWeather);
-        updateCoordinates(newCoordinates);
-        renderUi(retrieveWeather(), retrieveCoordinates());
-      });
-      secondLocation.addEventListener('click', async () => {
-        const newWeather = await getWeather(locationCoordinates, 1, unit);
-        const newCoordinates = locationCoordinates[1];
-        updateWeather(newWeather);
-        updateCoordinates(newCoordinates);
-        renderUi(retrieveWeather(), retrieveCoordinates());
-      });
-      dropdownMenu.appendChild(firstLocation);
-      dropdownMenu.appendChild(secondLocation);
-      break;
-    case 3:
-      clearMenu();
-      dropdownMenu.classList.remove('hide');
-      firstLocation.textContent = `${locationCoordinates[0].city}, ${locationCoordinates[0].state}, ${locationCoordinates[0].country}`;
-      secondLocation.textContent = `${locationCoordinates[1].city}, ${locationCoordinates[1].state}, ${locationCoordinates[1].country}`;
-      thirdLocation.textContent = `${locationCoordinates[2].city}, ${locationCoordinates[2].state}, ${locationCoordinates[2].country}`;
-      firstLocation.addEventListener('click', async () => {
-        const newWeather = await getWeather(locationCoordinates, 0, unit);
-        const newCoordinates = locationCoordinates[0];
-        updateWeather(newWeather);
-        updateCoordinates(newCoordinates);
-        renderUi(retrieveWeather(), retrieveCoordinates());
-      });
-      secondLocation.addEventListener('click', async () => {
-        const newWeather = await getWeather(locationCoordinates, 1, unit);
-        const newCoordinates = locationCoordinates[1];
-        updateWeather(newWeather);
-        updateCoordinates(newCoordinates);
-        renderUi(retrieveWeather(), retrieveCoordinates());
-      });
-      thirdLocation.addEventListener('click', async () => {
-        const newWeather = await getWeather(locationCoordinates, 2, unit);
-        const newCoordinates = locationCoordinates[2];
-        updateWeather(newWeather);
-        updateCoordinates(newCoordinates);
-        renderUi(retrieveWeather(), retrieveCoordinates());
-      });
-      dropdownMenu.appendChild(firstLocation);
-      dropdownMenu.appendChild(secondLocation);
-      dropdownMenu.appendChild(thirdLocation);
-      break;
-    default:
-      dropdownMenu.classList.add('hide');
-      clearMenu();
+
+  clearMenu();
+  dropdownMenu.classList.remove('hide');
+
+  for (let i = 0; i < locationCoordinates.length; i++) {
+    locationsArray[i].textContent =
+      `${locationCoordinates[i].city}, ${locationCoordinates[i].country}`;
+    locationsArray[i].addEventListener('click', async () => {
+      const newWeather = await getWeather(locationCoordinates, i, unit);
+      const newCoordinates = locationCoordinates[i];
+      updateWeather(newWeather);
+      updateCoordinates(newCoordinates);
+      renderUi(retrieveWeather(), retrieveCoordinates());
+    });
+    dropdownMenu.appendChild(locationsArray[i]);
+  }
+  if (locationCoordinates.length < 1) {
+    dropdownMenu.classList.add('hide');
+    clearMenu();
   }
 }, 500);
 
@@ -418,7 +364,7 @@ export default async function init() {
   renderTime();
   setInterval(renderTime, 30000);
   setWelcome();
-  setInterval(renderTime, 60000);
+  setInterval(setWelcome, 60000);
   const coordinates = retrieveCoordinates();
   const weather = await getWeather(coordinates, 0, unit);
   updateWeather(weather);

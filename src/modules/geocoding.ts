@@ -1,3 +1,5 @@
+import { Coordinates } from './data';
+
 type FetchedCoordinates = {
   name: string;
   latitude: string;
@@ -6,7 +8,9 @@ type FetchedCoordinates = {
   admin1: string;
 };
 
-export default async function getCoordinates(location: string) {
+export default async function getCoordinates(
+  location: string,
+): Promise<Coordinates[]> {
   try {
     const response = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=3&language=en&format=json`,
